@@ -1,0 +1,63 @@
+<div
+class="bg-info fixed-top"
+style="text-align: center; padding: 2vh;"
+>
+<h2 style="float: left;">Welcome, <%= name %> !</h2>
+<a href="/" class="btn-sm btn-dark" style="float: right; margin-right: 2%;">Logout</a>
+<a href="/viewOrders" class="btn-sm btn-dark" style="float: right;margin-right: 2%;">View Orders</a>
+<a href="/searchProduct" class="btn-sm btn-dark" style="float: right;margin-right: 2%;">Search</a>
+</div>
+<div class="mb-3" style="margin-top: 7vh; overflow: auto;margin-bottom: 5%;">
+    <br />
+    <br />
+    <div class="col-sm-6 col-md-6 col-lg-8 mx-auto" style="height: 100vh;">
+        <table class="table table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Delivery Agent</th>
+              <th scope="col">Date</th>
+              <th scope="col">Delivery Type</th>
+              <th scope="col">Gross Amount</th>
+              <th scope="col">Order Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tbody>
+    
+              <% results.rows.forEach(function(singleData){ %>
+                <tr>
+                <td> <%= singleData.order_id %> </td>
+                <td> <%= singleData.product %> </td>
+                <td> <%= singleData.quantity %> </td>
+                <td> <%= singleData.delivery_company %> </td>
+                <td> <%= singleData.date_time %> </td>
+                <td> <%= singleData.delivery_type %> </td>
+                <td> <%= singleData.total_cost %> </td>
+                <td> <%= singleData.order_status %> </td>
+                </tr>
+                <% }) %>
+              
+          </tbody>
+        </table>
+    
+      </div>
+    
+    <% if (typeof error != 'undefined'){ if (error != null || error != "") { %>
+    
+      <div class="card border-danger bg-danger" style="width: 35%; margin-left: 30%; margin-top: 1%; height: 1%;">
+        <div class="card-body mx-auto"> 
+          <p class="card-text text-white">
+            <%= error %>
+          </p>
+        </div>
+      </div>
+  
+      <% } %>
+  
+      <%  }%>  
+  
+  </div>
+  

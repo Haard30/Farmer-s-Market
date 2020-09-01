@@ -1,0 +1,58 @@
+<div
+class="bg-info fixed-top"
+style="text-align: center; padding: 2vh;"
+>
+<h2 style="float: left;">Welcome, <%= name %> !</h2>
+<a href="/" class="btn-sm btn-dark" style="float: right; margin-right: 2%;">Logout</a>
+<a href="/viewOrders" class="btn-sm btn-dark" style="float: right;margin-right: 2%;">View Orders</a>
+<a href="/searchProduct" class="btn-sm btn-dark" style="float: right;margin-right: 2%;">Search</a>
+</div>
+<h2>Select a Deivery Company and Type</h2>
+<div class="mb-3" style="margin-top: 7vh; overflow: auto;margin-bottom: 20%;">
+    <br />
+    <br />
+    <div class="col-sm-6 col-md-6 col-lg-8 mx-auto" style="height: 100vh;">
+        <table class="table table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Company ID</th>
+              <th scope="col">Company Name</th>
+              <th scope="col">Type of Delivery</th>
+              <th scope="col">Price</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tbody>
+    
+              <% allData.data.forEach(function(singleData){ %>
+                <tr>
+                <td> <%= singleData.C_ID %> </td>
+                <td> <%= singleData.C_Name %> </td>
+                <td> <%= singleData.Type %> </td>
+                <td> <%= singleData.Price %> </td>
+                <td><a href="/orderSummary?cID=<%= singleData.C_ID %>&ctype=<%= singleData.Type %>&qty=<%= quantity %>" class="btn btn-primary">Select</a></td>
+                </tr>
+                <% }) %>
+              
+          </tbody>
+        </table>
+    
+      </div>
+    
+    <% if (typeof error != 'undefined'){ if (error != null || error != "") { %>
+    
+      <div class="card border-danger bg-danger" style="width: 35%; margin-left: 30%; margin-top: 1%; height: 1%;">
+        <div class="card-body mx-auto"> 
+          <p class="card-text text-white">
+            <%= error %>
+          </p>
+        </div>
+      </div>
+  
+      <% } %>
+  
+      <%  }%>  
+  
+  </div>
+  
